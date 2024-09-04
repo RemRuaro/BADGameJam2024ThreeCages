@@ -19,3 +19,9 @@ MonoBehaviour:
   _PlayerHeight: 2
   _MouseSensitivityX: 600
   _MouseSensitivityY: 600
+  _PlayerProjectile: {fileID: 5995406229622710392, guid: dd96f35a62fb0fb46bcea69c216832cd, type: 3}
+  _PlayerRof: 1
+  _ProjectileAmount: 4
+  _ProjectileSpread: 6
+  _ProjectileForce: 40
+  _TimeBetweenShots: 1

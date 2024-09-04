@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class PlayerProjectile : MonoBehaviour
 {
+    // Start is called before the first frame update
     void Start()
     {
         Destroy(this.gameObject, 1.5f);
@@ -11,7 +12,6 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "TagPlayer") Destroy(this.gameObject);
-        if (collision.gameObject.tag == "TagGround") Destroy(this.gameObject);
+        if (collision.gameObject.tag == "TagEnemy") Destroy(this.gameObject);
     }
 }
