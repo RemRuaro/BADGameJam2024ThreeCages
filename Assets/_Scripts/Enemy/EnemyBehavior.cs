@@ -8,8 +8,12 @@ public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] DataEnemies _EnemyData;
 
-    // Temporarily disabled
-    //Rigidbody enemyRb;
+    public WeaponList _WeaponUsed;
+    
+    [SerializeField] private Transform _AttackPoint;
+
+    Rigidbody projectileRb;
+    Vector3 attackDirection;
 
     [SerializeField] private NavMeshAgent _NavigationMeshAgent;
     [SerializeField] private Transform _PlayerTarget;
@@ -18,16 +22,18 @@ public class EnemyBehavior : MonoBehaviour
     public Vector3 _WalkPoint;
     [SerializeField] private Vector3 _DistanceToWalkPoint;
     [SerializeField] private bool _WalkPointSet;
-    [SerializeField] private Transform _AttackPoint;
-    
-    // Temporarily disabled
-    // [SerializeField] private Vector3 _WalkPointMagnitude;
     
     public bool _PlayerInSightRange;
     public bool _PlayerInAttackRange;
    
     bool alreadyAttacked;
     float currentTime;
+
+    public enum WeaponList
+    {
+        Chancla,
+        Raygon
+    }
 
     private void Awake()
     {
@@ -37,8 +43,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Start()
     {
-        // Temporarily disabled
-        //enemyRb = GetComponent<Rigidbody>();
+
     }
 
     void Update()
@@ -57,10 +62,6 @@ public class EnemyBehavior : MonoBehaviour
         else if (_WalkPointSet) _NavigationMeshAgent.SetDestination(_WalkPoint);
 
         _DistanceToWalkPoint = transform.position - _WalkPoint;
-
-        // Temporarily disabled
-        //_WalkPointMagnitude = enemyRb.velocity;
-        //_WalkPointMagnitude = Vector3.forward;
 
         if (currentTime < _EnemyData._PatrolTimeInterval) currentTime += Time.deltaTime;
         else
@@ -85,6 +86,10 @@ public class EnemyBehavior : MonoBehaviour
         _NavigationMeshAgent.SetDestination(_PlayerTarget.position);
     }
 
+    Vector3 directedForwards = Vector3.zero;
+
+    int projectilesFired;
+
     private void HandAttackPlayer()
     {
         _NavigationMeshAgent.SetDestination(transform.position);
@@ -93,18 +98,59 @@ public class EnemyBehavior : MonoBehaviour
         if(!alreadyAttacked)
         {
             // Projectile attack
-            Rigidbody projectileRb = Instantiate(_EnemyData._ChanclaObject, _AttackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            projectileRb.AddForce(transform.forward * _EnemyData._ProjectileForce, ForceMode.Impulse);
+            switch (_WeaponUsed)
+            {
+                case WeaponList.Chancla:
+                    attackDirection = _PlayerTarget.position - _AttackPoint.position;
+                    
+                    projectileRb = Instantiate(_EnemyData._ChanclaObject, _AttackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+                    directedForwards = transform.forward + attackDirection.normalized;
+                    projectileRb.AddForce((transform.forward + attackDirection.normalized) * _EnemyData._ProjectileForce, ForceMode.Impulse);
+                    
+                    break;
+                case WeaponList.Raygon:
+                    projectilesFired = 0;
+                    RaygonAttack();
+                    break;
+            }
 
             alreadyAttacked = true;
-            
-            Invoke(nameof(HandResetAttack), _EnemyData._HandAttackRate);
+            switch (_WeaponUsed)
+            {
+                case WeaponList.Chancla:
+                    Invoke(nameof(HandResetAttack), _EnemyData._AttackRateChancla);
+                    break;
+                case WeaponList.Raygon:
+                    Invoke(nameof(HandResetAttack), _EnemyData._AttackRateRaygon);
+                    break;
+            }
         }
     }
 
     private void HandResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void RaygonAttack()
+    {
+        float x = Random.Range(-_EnemyData._ProjectileSpread, _EnemyData._ProjectileSpread);
+        float y = Random.Range(-_EnemyData._ProjectileSpread, _EnemyData._ProjectileSpread);
+        float z = Random.Range(-_EnemyData._ProjectileSpread, _EnemyData._ProjectileSpread);
+
+        attackDirection = _PlayerTarget.position - _AttackPoint.position;
+        Vector3 sprayDirection = attackDirection + new Vector3(x, y, z);
+
+        projectileRb = Instantiate(_EnemyData._ParticulateObject, _AttackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+        directedForwards = transform.forward + sprayDirection.normalized;
+        projectileRb.AddForce((transform.forward + sprayDirection.normalized) * _EnemyData._ProjectileForce, ForceMode.Impulse);
+
+        projectilesFired++;
+
+        if (projectilesFired < _EnemyData._ProjectileAmount)
+        {
+            Invoke(nameof(RaygonAttack), _EnemyData._AttackRateRaygon);
+        }
     }
 
     private void OnDrawGizmosSelected()

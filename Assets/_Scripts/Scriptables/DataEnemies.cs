@@ -7,9 +7,12 @@ public class DataEnemies : ScriptableObject
     public float _HandWalkPointRange;
     public float _HandSightRange;
     public float _HandAttackRange;
-    public float _HandAttackRate;
+    public float _AttackRateChancla;
+    public float _AttackRateRaygon;
     public GameObject _ChanclaObject;
+    public GameObject _ParticulateObject;
     public float _ProjectileForce;
     public float _PatrolTimeInterval;
-    public float _Speed;
+    public int _ProjectileAmount;
+    public float _ProjectileSpread;
 }

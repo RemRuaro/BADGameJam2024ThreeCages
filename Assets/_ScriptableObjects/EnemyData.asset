@@ -15,8 +15,11 @@ MonoBehaviour:
   _HandWalkPointRange: 500
   _HandSightRange: 20
   _HandAttackRange: 12
-  _HandAttackRate: 1
+  _AttackRateChancla: 1
+  _AttackRateRaygon: 2
   _ChanclaObject: {fileID: 7535943126557484977, guid: ffc7efdf1d5eca2438c51c9583506c65, type: 3}
+  _ParticulateObject: {fileID: 1304190601987227374, guid: 2bdb8b89f9b0ded42a1a9f0d8f751121, type: 3}
   _ProjectileForce: 40
   _PatrolTimeInterval: 5
-  _Speed: 1
+  _ProjectileAmount: 6
+  _ProjectileSpread: 4
