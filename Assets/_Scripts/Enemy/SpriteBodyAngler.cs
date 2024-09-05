@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class EnemyBodyAngler : MonoBehaviour
 {
@@ -38,10 +39,18 @@ public class EnemyBodyAngler : MonoBehaviour
         relative_angle = Vector3.SignedAngle(target_direction, transform.forward, Vector3.up);
         direction_index = GetDirectionIndex(relative_angle);
 
-        // if the player's relative angle is greater than 0, the sprite should be flipped, unless front and back sprites are used.
+        // if the player's relative angle is less than 0, the sprite should be flipped, unless front and back sprites are used.
         bool should_flip_sprite = relative_angle < 0;
         // TODO: need a bugfix. for some reason the sprite is still being flipped despite the direction index being front or back...
-        if ((direction_index != 0 || direction_index != 2) && should_flip_sprite)
+        // for now gonna make it so strictly not flip on its own case
+        // caveman solution
+        if (direction_index == 0 || direction_index == 2)
+        {
+            Vector3 force_straight = Vector3.one;
+            force_straight.x = 1.0f;
+            sprite_face_sprite_renderer.transform.localScale = force_straight;
+        }
+        else if (should_flip_sprite)
         {
             Vector3 flipped = Vector3.one;
             flipped.x *= -1.0f;
@@ -53,9 +62,6 @@ public class EnemyBodyAngler : MonoBehaviour
         }
 
         sprite_face_sprite_renderer.sprite = sprites[direction_index];
-
-
-
     }
     
     /**
