@@ -522,6 +522,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &564989470
 Transform:
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
