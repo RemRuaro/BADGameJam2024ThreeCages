@@ -6,15 +6,13 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] DataEnemies _EnemyData;
-
+    [Header("Refernces")]
+    [SerializeField] private DataEnemies _EnemyData;
+    [SerializeField] private EnemyHealthSystem _HealthSystem;
     public WeaponList _WeaponUsed;
-    
     [SerializeField] private Transform _AttackPoint;
 
-    Rigidbody projectileRb;
-    Vector3 attackDirection;
-
+    [Header("NavMesh Settings")]
     [SerializeField] private NavMeshAgent _NavigationMeshAgent;
     [SerializeField] private Transform _PlayerTarget;
     [SerializeField] private LayerMask _WhatIsPlayer;
@@ -22,12 +20,12 @@ public class EnemyBehavior : MonoBehaviour
     public Vector3 _WalkPoint;
     [SerializeField] private Vector3 _DistanceToWalkPoint;
     [SerializeField] private bool _WalkPointSet;
-    
     public bool _PlayerInSightRange;
     public bool _PlayerInAttackRange;
-   
     bool alreadyAttacked;
     float currentTime;
+    Rigidbody projectileRb;
+    Vector3 attackDirection;
 
     public enum WeaponList
     {
@@ -54,6 +52,8 @@ public class EnemyBehavior : MonoBehaviour
         if (!_PlayerInSightRange && !_PlayerInAttackRange) HandInPatrol();
         else if (_PlayerInSightRange && !_PlayerInAttackRange) HandSeekPlayer();
         else if (_PlayerInSightRange && _PlayerInAttackRange) HandAttackPlayer();
+
+        if (_HealthSystem.enemyHealth <= 0) Destroy(this.gameObject);
     }
 
     private void HandInPatrol()
@@ -149,7 +149,7 @@ public class EnemyBehavior : MonoBehaviour
 
         if (projectilesFired < _EnemyData._ProjectileAmount)
         {
-            Invoke(nameof(RaygonAttack), _EnemyData._AttackRateRaygon);
+            Invoke(nameof(RaygonAttack), _EnemyData._TimeBetweenAttacks);
         }
     }
 

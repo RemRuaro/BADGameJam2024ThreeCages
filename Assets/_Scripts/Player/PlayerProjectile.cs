@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private DataPlayer _PlayerData;
+
     void Start()
     {
         Destroy(this.gameObject, 1.5f);
@@ -12,6 +13,10 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "TagEnemy") Destroy(this.gameObject);
+        if (collision.gameObject.tag == "TagEnemy")
+        {
+            collision.gameObject.GetComponent<EnemyHealthSystem>().enemyHealth -= _PlayerData._ProjectileDamage;
+            Destroy(this.gameObject);
+        }
     }
 }

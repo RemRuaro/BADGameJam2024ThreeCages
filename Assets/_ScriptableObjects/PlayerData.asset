@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916ee99ab6de52641a7b244e55a7f9ef, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _PlayerMaxHealth: 0
-  _PlayerCurrentHealth: 0
   _PlayerSpeed: 10
   _PlayerGroundDrag: 5
   _PlayerHeight: 2
   _MouseSensitivityX: 600
   _MouseSensitivityY: 600
+  _PlayerMaxHealth: 600
+  _PlayerCurrentHealth: 0
   _PlayerProjectile: {fileID: 5995406229622710392, guid: dd96f35a62fb0fb46bcea69c216832cd, type: 3}
-  _PlayerRof: 1
+  _PlayerRof: 8
   _ProjectileAmount: 4
-  _ProjectileSpread: 6
+  _ProjectileSpread: 3
   _ProjectileForce: 40
-  _TimeBetweenShots: 1
+  _TimeBetweenShots: 0
+  _ProjectileDamage: 5

@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovementControlsFirstPerson : MonoBehaviour
 {
     [Header("Scriptable Object Reference")]
-    [SerializeField] DataPlayer _PlayerData;
+    [SerializeField] private DataPlayer _PlayerData;
 
     [Header("Player Movement System")]
-    [SerializeField] Transform _PlayerOrientation;
+    [SerializeField] private Transform _PlayerOrientation;
     Vector3 movementDirection;
     float inputHorizontal;
     float inputVertical;
@@ -19,8 +19,8 @@ public class PlayerMovementControlsFirstPerson : MonoBehaviour
     bool isGrounded;
 
     [Header("Shooting Controls")]
-    [SerializeField] Camera _PlayerCam;
-    [SerializeField] Transform _PlayerMuzzle;
+    [SerializeField] private Camera _PlayerCam;
+    [SerializeField] private Transform _PlayerMuzzle;
     int projectilesFired;
     float counter;
 
