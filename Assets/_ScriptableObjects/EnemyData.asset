@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad500427b291544baccc13c0865c186, type: 3}
+  m_Name: EnemyData
+  m_EditorClassIdentifier: 
+  _HandWalkPointRange: 500
+  _HandSightRange: 20
+  _HandAttackRange: 12
+  _PatrolTimeInterval: 5
+  _EnemyHealth: 60
+  _ProjectileForce: 40
+  _ChanclaObject: {fileID: 7535943126557484977, guid: ffc7efdf1d5eca2438c51c9583506c65, type: 3}
+  _AttackRateChancla: 1
+  _AttackDamageChancla: 50
+  _ParticulateObject: {fileID: 1304190601987227374, guid: 2bdb8b89f9b0ded42a1a9f0d8f751121, type: 3}
+  _AttackRateRaygon: 2
+  _AttackDamageRaygon: 2
+  _ProjectileAmount: 10
+  _ProjectileSpread: 3
+  _TimeBetweenAttacks: 0
