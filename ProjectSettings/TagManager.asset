@@ -9,6 +9,9 @@ TagManager:
   - TagGround
   - TagEnemy
   - TagAudio
+  - gas
+  - squish
+  - goal
   layers:
   - Default
   - TransparentFX
