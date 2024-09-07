@@ -10,7 +10,7 @@ public class SpritePointerBase : MonoBehaviour
     [SerializeField] bool can_look_y_axis;
     void Start()
     {
-        player_transform = GameObject.FindGameObjectWithTag("Player").transform;
+        player_transform = GameObject.FindGameObjectWithTag("TagPlayer").transform;
     }
 
     // Update is called once per frame

@@ -28,7 +28,7 @@ public class EnemyBodyAngler : MonoBehaviour
 
     void Start()
     {
-        player_transform = GameObject.FindWithTag("Player").transform;
+        player_transform = GameObject.FindWithTag("TagPlayer").transform;
     }
 
     // Update is called once per frame
