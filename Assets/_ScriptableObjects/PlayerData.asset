@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916ee99ab6de52641a7b244e55a7f9ef, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  _PlayerSpeed: 10
+  _PlayerGroundDrag: 5
+  _PlayerHeight: 2
+  _MouseSensitivityX: 600
+  _MouseSensitivityY: 600
+  _PlayerMaxHealth: 600
+  _PlayerCurrentHealth: 0
+  _PlayerProjectile: {fileID: 5995406229622710392, guid: dd96f35a62fb0fb46bcea69c216832cd, type: 3}
+  _PlayerRof: 8
+  _ProjectileAmount: 4
+  _ProjectileSpread: 3
+  _ProjectileForce: 40
+  _TimeBetweenShots: 0
+  _ProjectileDamage: 5
