@@ -100,12 +100,12 @@ TextureImporter:
       name: Enemy_2_front_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 40
-        width: 3309
-        height: 3704
+        x: 39
+        y: 42
+        width: 4070
+        height: 3707
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,10 +121,10 @@ TextureImporter:
       name: Enemy_2_front_3
       rect:
         serializedVersion: 2
-        x: 3416
-        y: 39
-        width: 3309
-        height: 3704
+        x: 12401
+        y: 50
+        width: 4070
+        height: 3707
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,13 +139,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_2_front_5
+      name: Enemy_2_front_0
       rect:
         serializedVersion: 2
-        x: 6751
-        y: 40
-        width: 3309
-        height: 3704
+        x: 4150
+        y: 45
+        width: 4070
+        height: 3707
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ed548349d574e641b8ee3bf21e1604c
-      internalID: 534320409
+      spriteID: 89d1965f73d095e4dbe31b85cd970797
+      internalID: -64327543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_2_front_2
+      rect:
+        serializedVersion: 2
+        x: 8275
+        y: 48
+        width: 4070
+        height: 3707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00d771dc31ba6149ba87ce3fd47c778
+      internalID: 573565529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_2_front_4
+      rect:
+        serializedVersion: 2
+        x: 16508
+        y: 50
+        width: 4070
+        height: 3707
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073575aaac6d1de4f922ff1e4338d8eb
+      internalID: 1066081121
       vertices: []
       indices: 
       edges: []
