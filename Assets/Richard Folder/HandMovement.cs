@@ -7,18 +7,16 @@ public class HandMovement : MonoBehaviour
 
     [SerializeField] float moveSPD;
     [SerializeField] float swingSPD;
-    [SerializeField] float strikeDepth;
-    [SerializeField] float originalYPos;
+    [SerializeField] float liftSPD;
 
-    [SerializeField] bool trigger;
-    [SerializeField] bool rise;
+    [SerializeField] float max;
+    [SerializeField] float min;
 
+    bool move = true;
 
     void Start()
     {
-
-        trigger = true;
-
+        //StartCoroutine(Strike());
     }
 
 
@@ -26,28 +24,32 @@ public class HandMovement : MonoBehaviour
     void Update()
     {
 
-        //transform.Translate(Vector3.forward * Time.deltaTime * moveSPD);
+        transform.Translate(Vector3.right * Time.deltaTime * moveSPD);
 
+        if (move)
+        { transform.Translate(Vector3.up * Time.deltaTime * liftSPD); }
+        if (!move)
+        { transform.Translate(Vector3.down * Time.deltaTime * swingSPD); }
 
-        if (this.gameObject.transform.position.y <= strikeDepth)
-        {
-            trigger = false;
-            rise = true;
-        }
-
-        if (trigger)
-        {
-            transform.Translate(Vector3.down * Time.deltaTime * swingSPD);
-        }
-
-        if (rise)
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * swingSPD);
-        }
-
-
-
+        if (transform.position.y >= max)
+        { move = false; }
+        if (transform.position.y <= min)
+        { move = true; }
     }
+
+
+
+    //IEnumerator Strike()
+    //{
+    //    while (true)
+    //    {
+    //        transform.Translate(Vector3.down * Time.deltaTime * swingSPD);
+    //        yield return new WaitForSeconds(2);
+    //        transform.Translate(Vector3.up * Time.deltaTime * liftSPD);
+    //        yield return new WaitForSeconds(2);
+    //    }
+
+    //}
 
 
 

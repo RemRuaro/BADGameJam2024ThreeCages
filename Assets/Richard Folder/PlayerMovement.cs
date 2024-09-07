@@ -16,8 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private bool onGround = true;
 
 
+    [SerializeField] GameObject gasDeath;
+    [SerializeField] GameObject squishDeath;
+    [SerializeField] GameObject goalPanel;
+
     void Start()
     {
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -25,6 +30,35 @@ public class PlayerMovement : MonoBehaviour
     {
         onGround = true;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.CompareTag("gas"))
+        {
+            gasDeath.SetActive(true);
+        }
+
+
+        if (collision.gameObject.CompareTag("goal"))
+        {
+            Time.timeScale = 0;
+            goalPanel.SetActive(true);
+        }
+
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("squish"))
+        {
+            squishDeath.SetActive(true);
+        }
+    }
+
+
     private void OnCollisionExit(Collision collision)
     {
         onGround = false;

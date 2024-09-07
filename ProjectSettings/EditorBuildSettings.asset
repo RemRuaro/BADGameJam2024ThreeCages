@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/LevelTitleScreen.unity
+    guid: 563d3df4252e74a40b06f2db65ff049d
+  - enabled: 1
+    path: Assets/Richard Folder/Level 1.unity
+    guid: ed5d092f86271a8438d412f2a2acfd9c
+  - enabled: 1
+    path: Assets/_Scenes/Level02LivingRoom.unity
+    guid: bcac5edeae867e8448eebe9d4fd08de0
   m_configObjects: {}
